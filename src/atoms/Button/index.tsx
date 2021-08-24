@@ -60,16 +60,6 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       <Typography variant="button">{label}</Typography>
     );
 
-    if (isLoading)
-      content = (
-        <DotsLoading
-          width="3.4rem"
-          height="auto"
-          style={{ display: 'flex', alignItems: 'center' }}
-          color={variant === 'raised' ? 'white' : 'brand-600'}
-        />
-      );
-
     if (withIcon) {
       const { icon, position } = withIcon;
       if (position === 'left')
@@ -112,7 +102,16 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         withIcon={!!withIcon}
         {...rest}
       >
-        {content}
+        {isLoading ? (
+          <DotsLoading
+            width="3.4rem"
+            height="auto"
+            style={{ display: 'flex', alignItems: 'center' }}
+            color={variant === 'raised' ? 'white' : 'brand-600'}
+          />
+        ) : (
+          content
+        )}
       </S.StyledButton>
     );
   }
