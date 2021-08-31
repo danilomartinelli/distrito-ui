@@ -7,26 +7,19 @@
   "module": "dist/distrito-ui.esm.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/distrito/distrito-ui.git"
+    "url": "git+https://github.com/danilomartinelli/distrito-ui.git"
   },
   "description": "Distrito UI Kit.",
   "bugs": {
     "url": "https://github.com/distrito/distrito-ui/issues"
   },
   "homepage": "https://github.com/distrito/distrito-ui#readme",
-  "directories": {
-    "test": "test"
-  },
   "keywords": [
     "design",
     "system",
     "distrito"
   ],
   "typings": "dist/index.d.ts",
-  "files": [
-    "dist",
-    "src"
-  ],
   "engines": {
     "node": ">=10"
   },
@@ -119,8 +112,5 @@
     "tslib": "^2.3.0",
     "typescript": "^4.3.4"
   },
-  "dependencies": {},
-  "publishConfig": {
-    "distrito:registry": "https://npm.pkg.github.com"
-  }
+  "dependencies": {}
 }
