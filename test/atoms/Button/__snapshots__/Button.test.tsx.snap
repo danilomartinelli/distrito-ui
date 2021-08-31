@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Renders correctly 1`] = `
+<button
+  className="sc-pNWdM kYPiiX"
+  disabled={false}
+  type="button"
+>
+  <span
+    className="sc-fujyAs ioZBJQ"
+  >
+    Click here!
+  </span>
+</button>
+`;
