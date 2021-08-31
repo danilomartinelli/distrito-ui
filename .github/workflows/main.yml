@@ -6,13 +6,30 @@ on:
 jobs:
   publish:
     runs-on: ubuntu-latest
+    if: "!contains(github.event.head_commit.message, '[skip ci]')"
+
+    strategy:
+      matrix:
+        node-version: [14.x]
+
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v2
+
       - uses: actions/setup-node@v1
         with:
-          node-version: 12
-      - run: yarn install
-      - run: yarn test
+          node-version: ${{ matrix.node-version }}
+
+      - run: yarn version --new-version "3.0.${GITHUB_RUN_ID}" --no-git-tag-version
+
+      - run: yarn install --frozen-lockfile
+
+      - run: yarn jest --ci --coverage
+
       - uses: JS-DevTools/npm-publish@v1
+        id: publish
         with:
           token: ${{ secrets.NPM_TOKEN }}
+
+      - if: steps.publish.outputs.type != 'none'
+        run: |
+          echo "Version changed: ${{ steps.publish.outputs.old-version }} => ${{ steps.publish.outputs.version }}"
